@@ -20,6 +20,7 @@ RUN a2dismod mpm_event mpm_worker \
     && a2enmod alias mpm_prefork rewrite proxy proxy_http proxy_html macro headers qos ssl
 
 EXPOSE 80
+EXPOSE 443 
 
 
 # used by logrotate-to-s3.sh
