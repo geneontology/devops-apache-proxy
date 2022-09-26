@@ -1,0 +1,1 @@
+0 0 * * 0 /opt/bin/download_certs.sh >> /tmp/download_certs.log 2>&1
