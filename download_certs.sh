@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# S3_SSL_CERTS_LOCATION=s3://go-service-logs-graphstore-internal/ssl-credentials.tar.gz
-
 echo `date`
 source /download_certs_source.sh
 DESTINATION=/tmp/ssl-credentials.tar.gz
 TAR_DESTINATION=/tmp/ssl-certs
+
+mkdir -p /opt/credentials
 
 SLEEP_DURATION=5
 tries=3
@@ -14,7 +14,7 @@ i=0
 while true 
    do
      echo  "Dowloading ssl credentials from $S3_SSL_CERTS_LOCATION Try: $i ..."
-     /usr/local/bin/s3cmd -c /opt/credentials/ssl-s3cfg get $S3_SSL_CERTS_LOCATION $DESTINATION 
+     aws s3 cp $S3_SSL_CERTS_LOCATION $DESTINATION
      ret=$?
 
      if [ $ret != 0 ]; then

@@ -4,8 +4,8 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TERM linux
 
 RUN apt-get update \
-    && apt-get install -y apache2 logrotate python3-pip libapache2-mod-qos \
-    && pip3 install s3cmd \
+    && apt-get install -y apache2 logrotate libapache2-mod-qos \
+    && apt-get install -y awscli \
     && apt-get -qq purge && apt-get -qq clean && rm -rf /var/lib/apt/lists/*
 
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d \
