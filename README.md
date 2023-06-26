@@ -25,7 +25,7 @@ docker build -t geneontology/apache-proxy:some_tag .
 docker push geneontology/apache-proxy:some_tag
 ```
 
-# Testing Logrorate
+# Testing Logrotate
 
 
 ```
