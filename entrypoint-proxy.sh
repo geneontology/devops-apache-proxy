@@ -4,7 +4,7 @@ USE_SSL="${USE_SSL:=1}"
 
 if [ $USE_SSL -ne 0 ]; then
    if [ ! -f "/download_certs_source.sh " ]; then
-      echo S3_SSL_CERTS_LOCATION=$S3_SSL_CERTS_LOCATION > download_certs_source.sh 
+      echo S3_SSL_CERTS_LOCATION=$S3_SSL_CERTS_LOCATION > /download_certs_source.sh 
    fi
 
    if [ -f "/crontabs.txt" ]; then
@@ -25,6 +25,11 @@ if [ $USE_S3 -ne 0 ]; then
    if [ -f "/apache2" ]; then
        mv /apache2 /etc/logrotate.d/apache2
        chmod 400 /etc/logrotate.d/apache2
+
+       if [ ! -f "/logrotate_source.sh " ]; then
+          echo S3_BUCKET=$S3_BUCKET > /logrotate_source.sh 
+          echo S3_PATH=$S3_PATH >> /logrotate_source.sh 
+       fi
    fi
 fi
 

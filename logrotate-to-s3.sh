@@ -87,6 +87,8 @@ EOF
 
 set -euo pipefail
 
+source /logrotate_source.sh
+
 # If you have changed logortate setting, you may change here.
 readonly dateext_suffix="-$(date "+%Y%m%d")" # "-%Y%m%d" is default `dateformat' of logrotate.
 readonly start_count=1                       # "1" is default `start' of logrotate.
