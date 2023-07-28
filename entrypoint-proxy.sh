@@ -33,6 +33,20 @@ if [ $USE_S3 -ne 0 ]; then
    fi
 fi
 
+USE_CLOUDFLARE="${USE_CLOUDFLARE:=1}"
+
+if [ $USE_CLOUDFLARE -ne 0 ]; then
+   if [ -f "/cloudflare/apache2.conf" ]; then
+       cp /cloudflare/apache2.conf /etc/apache2/apache2.conf
+       chmod 400 /etc/apache2/apache2.conf
+       cp /cloudflare/remoteip.conf /etc/apache2/conf-enabled/remoteip.conf
+       chmod 400 /etc/apache2/conf-available/remoteip.conf 
+   fi
+
+   a2enmod remoteip
+fi
+
+
 echo " Restart apache service." 
 service apache2 restart
 

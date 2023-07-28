@@ -4,14 +4,18 @@ Logrotate:
 
 - ENV USE_S3=1
 - ENV S3_BUCKET=some_bucket
-- ENV S3_PATH=someupo
+- ENV S3_PATH=some_prefix
 
 HTTPS:
 
 - ENV USE_SSL=1
 - ENV S3_SSL_CERTS_LOCATION=s3://replace_me
 
+CLOUDFLARE:
 
+- ENV USE_CLOUDFLARE=1
+- Use combined custom log
+  - CustomLog "path_to_log_file" `combined`
 
 # Build And Push Image
 
