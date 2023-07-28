@@ -29,6 +29,7 @@ ENV S3_BUCKET=bucket
 ENV USE_S3=1
 ENV USE_SSL=1
 ENV S3_SSL_CERTS_LOCATION=s3://replace_me
+ENV USE_CLOUDFLARE=0
 
 COPY ./entrypoint-proxy.sh /entrypoint.sh
 
@@ -39,6 +40,9 @@ COPY ./logrotate-to-s3.sh /opt/bin/logrotate-to-s3.sh
 # COPY crontab and script to download ssl credentials 
 COPY ./crontabs.txt /crontabs.txt
 COPY ./download_certs.sh /opt/bin/download_certs.sh 
+
+
+COPY ./cloudflare /cloudflare
 
 # RUN chmod +x /entrypoint.sh /opt/bin/logrotate-to-s3.sh && chmod 400 /etc/logrotate.d/apache2
 RUN chmod +x /entrypoint.sh /opt/bin/logrotate-to-s3.sh /opt/bin/download_certs.sh
