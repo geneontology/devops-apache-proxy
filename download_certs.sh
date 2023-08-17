@@ -13,7 +13,7 @@ i=0
 
 while true 
    do
-     echo  "Dowloading ssl credentials from $S3_SSL_CERTS_LOCATION Try: $i ..."
+     echo  "Downloading ssl credentials from $S3_SSL_CERTS_LOCATION Try: $i ..."
      aws s3 cp $S3_SSL_CERTS_LOCATION $DESTINATION
      ret=$?
 
