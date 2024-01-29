@@ -29,6 +29,10 @@ if [ $USE_S3 -ne 0 ]; then
        if [ ! -f "/logrotate_source.sh " ]; then
           echo S3_BUCKET=$S3_BUCKET > /logrotate_source.sh 
           echo S3_PATH=$S3_PATH >> /logrotate_source.sh 
+
+	  if [ ! -z $S3_PREFIX ]; then
+             echo PREFIX=$S3_PREFIX >> logrotate_source.sh
+          fi
        fi
    fi
 fi
